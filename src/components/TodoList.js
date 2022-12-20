@@ -11,9 +11,13 @@ export default function TodoList ({
 }) {
   return (
     <>
-      Title<input value={newTodo.title} onChange={handleChange} name='title' />
+      {/* Title<input value={newTodo.title} onChange={handleChange} name='title' /> */}
+      Title<input value={newTodo.title} onChange={handleChange} onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+                createTodo()
+            }}} name='title' />
       Completed<input type='checkbox' checked={newTodo.completed} onChange={(evt) => setNewTodo({ ...newTodo, completed: evt.target.checked })} /><br />
-      <button onClick={() => createTodo()}>Create New Todo</button>
+      {/* <button onClick={() => createTodo()}>Create New Todo</button> */}
       {todos.length
         ? (
           <>
@@ -28,6 +32,7 @@ export default function TodoList ({
                     deleteTodo={deleteTodo}
                     setNewTodo={setNewTodo}
                     newTodo={newTodo}
+                    handleChange={handleChange}
                   />
                 )
               })}
@@ -43,6 +48,7 @@ export default function TodoList ({
                     deleteTodo={deleteTodo}
                     setNewTodo={setNewTodo}
                     newTodo={newTodo}
+                    handleChange={handleChange}
                   />
                 )
               })}

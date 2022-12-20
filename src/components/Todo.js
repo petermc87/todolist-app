@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function Todo ({ todo, updateTodo, deleteTodo, setNewTodo, newTodo }) {
+export default function Todo ({ todo, updateTodo, deleteTodo, setNewTodo, newTodo, handleChange }) {
   const [showInput, setShowInput] = useState(false)
   return (
     <>
@@ -14,6 +14,7 @@ export default function Todo ({ todo, updateTodo, deleteTodo, setNewTodo, newTod
         <input
           style={{ display: showInput ? 'block' : 'none' }}
           text='text'
+        //   onChange={handleChange}
           onKeyDown={(updatedData) => {
             if (updatedData.key === 'Enter') {
               updateTodo(todo._id, updatedData)
@@ -25,7 +26,8 @@ export default function Todo ({ todo, updateTodo, deleteTodo, setNewTodo, newTod
         <label className='middle'>
           Complete
           {/* <input type='checkbox' checked={todo.completed} onChange={(evt) => setNewTodo({ newTodo, completed: evt.target.checked })} /><br /> */}
-          <input type='checkbox' checked={todo.completed} onChange={(evt) => updateTodo(todo._id, evt)} /><br />
+          {/* <input type='checkbox' checked={todo.completed} onChange={(evt) => updateTodo(todo._id, evt)} /><br /> */}
+          <input type='checkbox' checked={todo.completed} onChange={handleChange} /><br /> 
         </label>
         {/* and it is {todo.completed ? 'its complete' : 'its not complete'} */}
         <br /><button onClick={() => deleteTodo(todo._id)}>Delete Todo</button>
