@@ -62,7 +62,7 @@ export default function App () {
   const updateTodo = async (id, updatedData) => {
     try {
       const response = await fetch(`/api/todos/${id}`, {
-        
+
         method: 'PUT',
         header: {
           'Content-Type': 'application/json'
@@ -75,7 +75,6 @@ export default function App () {
       console.error(error)
     }
   }
-
 
   useEffect(() => {
     getTodos()
