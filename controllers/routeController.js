@@ -4,17 +4,16 @@ const router = express.Router()
 const dataController = require('./dataController')
 const apiController = require('./apiRoutes')
 
-//Index
+// Index
 router.get('/todos', dataController.index, apiController.index)
-//Create
+// Create
 router.post('/todos', dataController.create, apiController.show)
-//Show
+// Show
 router.get('/todos/:id', dataController.show, apiController.show)
-//Delete
+// Delete
 router.delete('/todos/:id', dataController.destroy, apiController.show)
-//Update
+// Update
 router.put('/todos/:id', dataController.update, apiController.show)
-
 
 // //Index
 // router.get('/', dataController.index, apiController.index)
@@ -26,6 +25,5 @@ router.put('/todos/:id', dataController.update, apiController.show)
 // router.delete('/:id', dataController.destroy, apiController.show)
 // //Update
 // router.put('/:id', dataController.update, apiController.show)
-
 
 module.exports = router

@@ -2,20 +2,18 @@ import Todo from './Todo'
 
 export default function TodoList ({
     todos,
-    addTodo,
-    completeTodo,
-    editTodoText,
-    deleteTodo
+    createTodo,
+    updateTodo,
+    deleteTodo,
+    setNewTodo,
+    newTodo,
+    handleChange
 }) {
     return (
         <>
-        <h1>Create Todo</h1>
-        <input
-            type='text'
-            onKeyDown={(e) => {
-                e.key === 'Enter' && addTodo(e)
-            }}
-        />
+      {'Title'}<input value={newTodo.title} onChange={handleChange} name='title' />
+      {'Completed'}<input type='checkbox' checked={newTodo.completed} onChange={(evt) => setNewTodo({ ...newTodo, completed: evt.target.checked })}/><br />
+      <button onClick={() => createTodo()}>Create New Todo</button>
         {todos.length ? (
             <>
                 <h1>Todo Items</h1>
@@ -25,9 +23,10 @@ export default function TodoList ({
                         <Todo
                             key={todo.id}
                             todo={todo}
-                            completeTodo={completeTodo}
-                            editTodoText={editTodoText}
+                            updateTodo={updateTodo}
                             deleteTodo={deleteTodo}
+                            setNewTodo={setNewTodo}
+                            newTodo={newTodo}
                         />
                     )
                    })
@@ -38,11 +37,12 @@ export default function TodoList ({
                    {todos.filter((i) => i.completed).map((todo) =>{
                     return(
                         <Todo
-                            key={todo.id}
-                            todo={todo}
-                            completeTodo={completeTodo}
-                            editTodoText={editTodoText}
-                            deleteTodo={deleteTodo}
+                        key={todo.id}
+                        todo={todo}
+                        updateTodo={updateTodo}
+                        deleteTodo={deleteTodo}
+                        setNewTodo={setNewTodo}
+                        newTodo={newTodo}
                         />
                     )
                    })
