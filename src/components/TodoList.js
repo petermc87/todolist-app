@@ -11,48 +11,62 @@ export default function TodoList ({
 }) {
   return (
     <>
-      {/* Title<input value={newTodo.title} onChange={handleChange} name='title' /> */}
-      Title<input value={newTodo.title} onChange={handleChange} onKeyDown={(e) => {
-            if (e.key === 'Enter') {
+      <h1>Todo Tracker</h1>
+      <div className='list-items'>
+        <h2>Create Todo</h2>
+        <div className='new-item'>
+          <p>Enter your Todo below</p>
+          <input
+            id='input-field' value={newTodo.title} onChange={handleChange} placeholder='Hit return to add item'onKeyDown={(e) => {
+              if (e.key === 'Enter') {
                 createTodo()
-            }}} name='title' />
-      Completed<input type='checkbox' checked={newTodo.completed} onChange={(evt) => setNewTodo({ ...newTodo, completed: evt.target.checked })} /><br />
-      {/* <button onClick={() => createTodo()}>Create New Todo</button> */}
+              }
+            }} name='title'
+          />
+          <p>Completed</p>
+          <input type='checkbox' checked={newTodo.completed} onChange={(evt) => setNewTodo({ ...newTodo, completed: evt.target.checked })} /><br />
+          {/* <button onClick={() => createTodo()}>Create New Todo</button> */}
+        </div>
+      </div>
       {todos.length
         ? (
           <>
-            <h1>Todo Items</h1>
-            <ul className='todolist'>
-              {todos.filter((i) => !i.completed).map((todo) => {
-                return (
-                  <Todo
-                    key={todo.id}
-                    todo={todo}
-                    updateTodo={updateTodo}
-                    deleteTodo={deleteTodo}
-                    setNewTodo={setNewTodo}
-                    newTodo={newTodo}
-                    handleChange={handleChange}
-                  />
-                )
-              })}
-            </ul>
-            <h1>Completed Items</h1>
-            <ul className='todolist'>
-              {todos.filter((i) => i.completed).map((todo) => {
-                return (
-                  <Todo
-                    key={todo.id}
-                    todo={todo}
-                    updateTodo={updateTodo}
-                    deleteTodo={deleteTodo}
-                    setNewTodo={setNewTodo}
-                    newTodo={newTodo}
-                    handleChange={handleChange}
-                  />
-                )
-              })}
-            </ul>
+            <div className='list-items'>
+              <h2>Todo Items</h2>
+              <ul className='todolist'>
+                {todos.filter((i) => !i.completed).map((todo) => {
+                  return (
+                    <Todo
+                      key={todo._id}
+                      todo={todo}
+                      updateTodo={updateTodo}
+                      deleteTodo={deleteTodo}
+                      setNewTodo={setNewTodo}
+                      newTodo={newTodo}
+                      handleChange={handleChange}
+                    />
+                  )
+                })}
+              </ul>
+            </div>
+            <div className='list-items'>
+              <h2>Completed Items</h2>
+              <ul className='todolist'>
+                {todos.filter((i) => i.completed).map((todo) => {
+                  return (
+                    <Todo
+                      key={todo._id}
+                      todo={todo}
+                      updateTodo={updateTodo}
+                      deleteTodo={deleteTodo}
+                      setNewTodo={setNewTodo}
+                      newTodo={newTodo}
+                      handleChange={handleChange}
+                    />
+                  )
+                })}
+              </ul>
+            </div>
           </>
           )
         : (

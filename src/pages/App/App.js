@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import TodoList from '../../components/TodoList'
+import '../../styles.css'
 
 export default function App () {
   const [todos, setTodos] = useState([])
