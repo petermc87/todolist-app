@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import TodoList from '../../components/TodoList'
-// import Todo from '../../components/Todo'
 
 export default function App () {
   const [todos, setTodos] = useState([])
