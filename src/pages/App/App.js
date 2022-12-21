@@ -33,6 +33,7 @@ export default function App () {
   const getTodos = async () => {
     try {
       const response = await fetch('/api/todos')
+      console.log(response)
       const data = await response.json()
       setTodos(data)
     } catch (error) {
@@ -61,8 +62,8 @@ export default function App () {
   // update
   const updateTodo = async (id, updatedData) => {
     try {
+      console.log(updatedData)
       const response = await fetch(`/api/todos/${id}`, {
-
         method: 'PUT',
         header: {
           'Content-Type': 'application/json'
@@ -70,9 +71,11 @@ export default function App () {
         body: JSON.stringify({ ...updatedData })
       })
       const data = await response.json()
+      console.log(data)
       setFoundTodo(data)
     } catch (error) {
       console.error(error)
+
     }
   }
 
@@ -94,40 +97,6 @@ export default function App () {
         setNewTodo={setNewTodo}
       />
 
-      {/*
-      {'Title'}<input value={newTodo.title} onChange={handleChange} name='title' />
-      {'Completed'}<input type='checkbox' checked={newTodo.completed} onChange={(evt) => setNewTodo({ ...newTodo, completed: evt.target.checked })}/><br />
-       */}
-
-      {/* <button onClick={() => createTodo()}>Create New Todo</button> */}
-      {/* {
-        foundTodo ? <div>
-          <h1>{foundTodo.title}</h1>
-          <h2>{foundTodo.completed ? 'I am complete' : 'I am not complete'}</h2>
-        </div>
-        : <>No Todos to Display</>
-      } */}
-      {/* {
-        todos && todos.length ? (
-
-            <ul>
-              TODO
-              {
-                todos.map((todo) => {
-                  return(
-
-                    <li>
-                      <h3 >{todo.title}</h3> and it is {todo.completed ? 'its complete' : 'its not complete'}
-                         <br /><button onClick={() => deleteTodo(todo._id)}>Delete Todo</button>
-                    </li>
-
-                  )
-                })
-              }
-            </ul>
-
-        ) : <h1>No todos to display yet</h1>
-      } */}
     </div>
   )
 }

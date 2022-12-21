@@ -15,15 +15,5 @@ router.delete('/todos/:id', dataController.destroy, apiController.show)
 // Update
 router.put('/todos/:id', dataController.update, apiController.show)
 
-// //Index
-// router.get('/', dataController.index, apiController.index)
-// //Create
-// router.post('/', dataController.create, apiController.show)
-// //Show
-// router.get('/:id', dataController.show, apiController.show)
-// //Delete
-// router.delete('/:id', dataController.destroy, apiController.show)
-// //Update
-// router.put('/:id', dataController.update, apiController.show)
 
 module.exports = router

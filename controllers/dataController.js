@@ -41,6 +41,8 @@ const dataController = {
   },
   update (req, res, next) {
     ToDo.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedToDo) => {
+
+      console.log(updatedToDo)
       if (err) {
         res.status(400).send({
           msg: err.message

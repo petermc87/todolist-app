@@ -4,7 +4,7 @@ const { Schema, model } = mongoose
 
 const toDoSchema = new Schema({
   title: { type: String, required: true },
-  completed: { type: Boolean, required: true }
+  completed: Boolean
 })
 
 const ToDo = model('ToDo', toDoSchema)
