@@ -19,7 +19,7 @@ export default function TodoList ({
         newTodo={newTodo}
         handleChange={handleChange}
       />
-      {todos.length
+      {todos && todos.length
         ? (
           <>
             <div className='list-items'>
@@ -32,7 +32,7 @@ export default function TodoList ({
                       updateTodo={updateTodo}
                     />
                   )
-                })}
+                }).reverse()}
               </ul>
             </div>
             <div className='list-items'>
@@ -45,7 +45,7 @@ export default function TodoList ({
                       deleteTodo={deleteTodo}
                     />
                   )
-                })}
+                }).reverse()}
               </ul>
             </div>
           </>

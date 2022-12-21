@@ -33,7 +33,6 @@ export default function App () {
   const getTodos = async () => {
     try {
       const response = await fetch('/api/todos')
-      console.log(response)
       const data = await response.json()
       setTodos(data)
     } catch (error) {
@@ -48,7 +47,6 @@ export default function App () {
         headers: {
           'Content-Type': 'application/json'
         }
-
       })
       const data = await response.json()
       setFoundTodo(data)
@@ -85,18 +83,15 @@ export default function App () {
 
   return (
     <div className='App'>
-
       <TodoList
         todos={todos}
         createTodo={createTodo}
-        getTodos={getTodos}
         updateTodo={updateTodo}
         deleteTodo={deleteTodo}
+        setNewTodo={setNewTodo}
         handleChange={handleChange}
         newTodo={newTodo}
-        setNewTodo={setNewTodo}
       />
-
     </div>
   )
 }
